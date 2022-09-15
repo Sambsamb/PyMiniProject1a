@@ -10,7 +10,7 @@ Mini Project 1
 
 # (5) Proper import of packages used:
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import yfinance as yf
 import datetime as dt
 
@@ -42,7 +42,7 @@ for stock in myStockList:
 
 # (10) Store this information in a list that you will convert to a ndarray in NumPy
 myNumPyArray = np.array([rawData[0], rawData[1], rawData[2], rawData[3], rawData[4]])
-# Technically the input rawData[0] is <class 'pandas.core.frame.DataFrame'> and not <class 'list'> but the resulting NumPy ndarray array works
+# Technically the input rawData[0] is <class 'pandas.core.frame.DataFrame'> and not <class 'list'> but the resulting NumPy ndarray works the same
 
 print()
 print("Loaded up the raw data into a NumPy array",'"myNumPyArray"',type(myNumPyArray))
@@ -57,4 +57,14 @@ print("The following expression returns the 'Adj Close' of all 10 days of the fi
 print(myNumPyArray[4,:10,4]) # 'Adj Close' of all 10 days of 'COIN'
 
 
+# (10) Plot these 5 graphs
+# (10) Save these graphs in a folder called charts as PNG files
+print()
+i = 0
+for stock in myStockList:
+    print("Plotting stock",stock)
+    plt.plot(myNumPyArray[i,:10,4])
+    plt.savefig('charts/' + stock + '.png')
+    plt.show()
+    i += 1
 
