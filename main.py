@@ -42,7 +42,7 @@ for stock in myStockList:
 # (10) Store this information in a list that you will convert to a ndarray in NumPy
     print("Data is stored as", type(pricedata))  # Data is stored in <class 'list'>
     myNumPyArray = np.array(pricedata)
-    print("Data is now converted to", type(myNumPyArray))  # Data is stored in <class 'numpy.ndarray'>
+    print("Data is now converted to", type(myNumPyArray))  # Data is now converted to <class 'numpy.ndarray'>
     print("Plotting 'Adj Close' prices of the last", countOfDays, "days of stock", stock)
 # (10) Plot the graph
     plt.plot(myNumPyArray)
