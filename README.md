@@ -17,7 +17,7 @@ The main.py file requires the following 3 packages:
 
 To install these packages use:
 ```python
-pip install -r Requirements.txt
+pip install -r requirements.txt
 ```
 The list of stocks is defined in line 30 and can be changed as desired
 ```python
