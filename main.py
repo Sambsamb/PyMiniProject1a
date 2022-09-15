@@ -13,6 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import yfinance as yf
 import datetime as dt
+import os
 
 
 # (20) Collect the closing price of 5 of your favorite stock tickers for the last 10 trading days
@@ -59,10 +60,12 @@ print(myNumPyArray[4,:10,4]) # 'Adj Close' of all 10 days of 'COIN'
 
 # (10) Plot these 5 graphs
 # (10) Save these graphs in a folder called charts as PNG files
+if not os.path.exists('charts'):
+    os.makedirs('charts')
 print()
 i = 0
 for stock in myStockList:
-    print("Plotting stock",stock)
+    print("Plotting 'Adj Close' values of the last",countOfDays,"days of stock",stock)
     plt.plot(myNumPyArray[i,:10,4])
     plt.savefig('charts/' + stock + '.png')
     plt.show()
