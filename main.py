@@ -31,42 +31,30 @@ for stock in myStockList:
     rawData.append(datum[-countOfDays:]) # Add only the last "countOfDays" to our rawData list
 print("done")
 
+# Show raw data collected:
+i = 0
+for stock in myStockList:
+    print()
+    print("Stock",stock,"raw data:")
+    print(rawData[i])
+    i += 1
+
 
 # (10) Store this information in a list that you will convert to a ndarray in NumPy
+myNumPyArray = np.array([rawData[0], rawData[1], rawData[2], rawData[3], rawData[4]])
+# Technically the input rawData[0] is <class 'pandas.core.frame.DataFrame'> and not <class 'list'> but the resulting NumPy ndarray array works
+
 print()
+print("Loaded up the raw data into a NumPy array",'"myNumPyArray"',type(myNumPyArray))
+print("This is a 3 dimentional array, with the following shape/dimensions:",myNumPyArray.shape)
+print("The first dimension is the 'stock', for example the metrics of all ten days of the fifth stock 'COIN' can be referenced as 'myNumPyArray[4]'")
+print(myNumPyArray[4]) # Data of the last stock 'COIN' (all 10 days, all 6 metrics)
+print("The second dimension is the 'date', for example metrics of the tenth day the fifth stock 'COIN' can be referenced as 'myNumPyArray[4,9]':")
+print(myNumPyArray[4,9]) # Metrics (Open, High, Low, Close, Adj Close, Volume) of the tenth day of the fifth stock 'COIN'
+print("The third dimension is a specific metric of a specific date of a specific stock, for example the 'Adj Close' of the tenth day the fifth stock 'COIN' can be referenced as 'myNumPyArray[4,9,4]':")
+print(myNumPyArray[4,9,4]) # 'Adj Close' of the tenth day of 'COIN'
+print("The following expression returns the 'Adj Close' of all 10 days of the fifth stock 'COIN' 'myNumPyArray[4,:10,4]':")
+print(myNumPyArray[4,:10,4]) # 'Adj Close' of all 10 days of 'COIN'
 
 
-# Get MSFt data
-data = yf.download("MSFT", start="2022-08-01", end="2022-09-30")
 
-print("Got",len(data),"days worth of MSFT stock price data.")
-print(data[-10:])
-# Create empty list (native 1d Py array):
-msftPrices = []
-
-# Populate list:
-for price in data['Adj Close']:
-    msftPrices.append(price)
-
-print(msftPrices)
-
-print("msftPrices data type is",type(msftPrices))
-
-ms2 = data['Adj Close']
-print("Alternatively, ms2 data type is",type(ms2))
-
-# Create a NumPy array
-msftarray = np.array(msftPrices)
-print("msftarray data type is",type(msftarray))
-
-ms2array = np.array(ms2)
-print("Alternatively, ms2array data type is",type(ms2array))
-
-# Creatematplotlib graph
-plt.plot(msftarray)
-
-# Save to file
-plt.savefig('charts/msft.png')
-
-# Show the file
-plt.show()
