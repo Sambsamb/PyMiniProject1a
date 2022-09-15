@@ -5,8 +5,9 @@ Mini Project 1
 9/15/2022
 """
 
+# Importing the used packages
 import numpy as np
-import matplotlib.pyplot as plt
+import matplotlib as plt
 import yfinance as yf
 
 # Get MSFt data
@@ -25,8 +26,15 @@ print(msftPrices)
 
 print("msftPrices data type is",type(msftPrices))
 
+ms2 = data['Adj Close']
+print("Alternatively, ms2 data type is",type(ms2))
+
 # Create a NumPy array
 msftarray = np.array(msftPrices)
+print("msftarray data type is",type(msftarray))
+
+ms2array = np.array(ms2)
+print("Alternatively, ms2array data type is",type(ms2array))
 
 # Creatematplotlib graph
 plt.plot(msftarray)
