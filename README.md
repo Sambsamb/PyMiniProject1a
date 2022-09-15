@@ -27,7 +27,7 @@ The count of days is defined in line 31 and can be changed as desired
 ```python
 countOfDays = 10
 ```
-The script write progress information to the console similar to
+The script writes progress information to the console similar to
 ```python
 Collecting the closing price of the following 5 stock tickers for the last 10 trading days:
 
