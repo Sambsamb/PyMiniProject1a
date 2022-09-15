@@ -24,23 +24,18 @@ startdate = enddate + dt.timedelta(days=-30)
 
 print() # Blank line
 print("Collecting the closing price of the following",len(myStockList),"stock tickers for the last",countOfDays,"trading days:")
-for stock in myStockList:
-    print("    ",stock)
-rawData = [] # Create empty list (native 1d Py array), each list element will be raw data of one stock
+myVars = locals()
 for stock in myStockList:
     datum = yf.download(stock, start=startdate, end=enddate)
-    rawData.append(datum[-countOfDays:]) # Add only the last "countOfDays" to our rawData list
-print("done")
-
-# Show raw data collected:
-i = 0
-for stock in myStockList:
+    lastDays = datum[-countOfDays:]
+    stockValue = lastDays['Adj Close']
+    myVars[stock] = stockValue
     print()
-    print("Stock",stock,"raw data:")
-    print(rawData[i])
-    i += 1
+    print("    Stock",stock)
+    print(myVars[stock])
+print("Data is stored in",type(myVars[stock])) # Data is stored in <class 'pandas.core.series.Series'>
 
-
+"""
 # (10) Store this information in a list that you will convert to a ndarray in NumPy
 myNumPyArray = np.array([rawData[0], rawData[1], rawData[2], rawData[3], rawData[4]])
 # Technically the input rawData[0] is <class 'pandas.core.frame.DataFrame'> and not <class 'list'> but the resulting NumPy ndarray works the same
@@ -71,3 +66,4 @@ for stock in myStockList:
     plt.show()
     i += 1
 
+"""
