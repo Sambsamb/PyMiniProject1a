@@ -46,6 +46,12 @@ for stock in myStockList:
     print("Plotting 'Adj Close' prices of the last", countOfDays, "days of stock", stock)
 # (10) Plot the graph
     plt.plot(myNumPyArray)
+# Plot improvements
+    title = "Adjusted closing price of " + stock + " stock in the past " + str(countOfDays) + " days"
+    plt.title(title, fontsize=13)
+    plt.xlabel('Day')
+    plt.ylabel('Price ($)')
+    plt.grid()
 # (10) Save the graph in a folder called charts as PNG file
     plt.savefig('charts/' + stock + '.png')
     plt.show()
